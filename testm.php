@@ -1,10 +1,12 @@
 <?php
 include 'soldier.php';
+
 /*echo "获取页面传来的参数";
-$type = $_GET['type'];
-$proId = $_GET['id'];
-echo $type . "产品type";
-echo $proId . "产品Id";*/
+$id=$_GET['id'];
+$cvc=$_GET['cvc'];
+$rarity=$_GET['rarity'];
+$quality=$_GET['quality'];
+*/
 
 $id=10101;
 $cvc=1800;
@@ -17,23 +19,13 @@ print("<pre>"); // 格式化输出数组
 print_r($data[0]);
 print("</pre>");
 
-//echo getRarity($data,$id)."<br>";
-//echo getCombatPoints($data,$id)."<br>";
-//print_r(getLegalSoldier($data,$cvc));
-//print_r(getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc));
+echo getRarity($data,$id)."<br>";
+echo getCombatPoints($data,$id)."<br>";
+print_r(getLegalSoldier($data,$cvc));
+print_r(getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc));
 print_r(getUnlockedSoldierJson($data,$quality));
 
 
-
-/*echo "<br>";
-echo $id;
-echo "<br>";
-echo getCombatPoints($data,$id);
-echo "<br>";
-
-echo "<br>";
-echo getLegalSoldier($data,$cvc);
-echo "<br>";*/
 
 
 
