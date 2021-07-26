@@ -12,18 +12,12 @@ $quality=$_GET['quality'];
 */
 
 
-setNewJsonArray();
-$data=getJsonArray();
-print("<pre>"); // 格式化输出数组
-print_r($data[0]);
-print("</pre>");
-
 class Main{
 
 public static function setNewJsonArray(){
-// 从文件中读取数据到PHP变量
+    // 从文件中读取数据到PHP变量
     $json_string = file_get_contents('json/config.army.model.json');
-// 用参数true把JSON字符串强制转成PHP数组
+    // 用参数true把JSON字符串强制转成PHP数组
     $data = json_decode($json_string, true);
     $myarray=array();
     foreach ($data as $x=>$x_values){
