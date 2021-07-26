@@ -9,6 +9,7 @@ echo $proId . "产品Id";*/
 $id=10101;
 $cvc=1800;
 $rarity=1;
+$quality=1;
 
 setNewJsonArray();
 $data=getJsonArray();
@@ -16,9 +17,11 @@ print("<pre>"); // 格式化输出数组
 print_r($data[0]);
 print("</pre>");
 
-echo getRarity($data,$id)."<br>";
-echo getCombatPoints($data,$id)."<br>";
-print_r(getLegalSoldier($data,$cvc));
+//echo getRarity($data,$id)."<br>";
+//echo getCombatPoints($data,$id)."<br>";
+//print_r(getLegalSoldier($data,$cvc));
+//print_r(getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc));
+print_r(getUnlockedSoldierJson($data,$quality));
 
 
 
@@ -41,7 +44,7 @@ function setNewJsonArray(){
     $data = json_decode($json_string, true);
     $myarray=array();
     foreach ($data as $x=>$x_values){
-        $soldier=new soldierClass($data[$x]['id'],$data[$x]['Radius'],$data[$x]['CombatPoints'],$data[$x]['Quality'],$data[$x]['Cvc']);
+        $soldier=new soldierClass($data[$x]['id'],$data[$x]['Rarity'],$data[$x]['CombatPoints'],$data[$x]['Quality'],$data[$x]['Cvc']);
         array_push($myarray,$soldier);
     }
     //print_r($myarray);
@@ -65,7 +68,8 @@ function getJsonArray(){
 function getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc){
     $legalCvcAndUnlockedSoldier=array();
     foreach ($data as $x=>$x_value){
-        if($data[$x][$rarity]==$rarity&&$data[$x][$quality]>=$quality&&$data[$x]['cvc']<=$cvc){
+        //echo $data[$x]['rarity']." ".$data[$x]['quality']." ".$data[$x]['cvc']."<br>";
+        if($data[$x]['rarity']==$rarity&&$data[$x]['quality']>=$quality&&$data[$x]['cvc']<=$cvc){
             array_push($legalCvcAndUnlockedSoldier,$data[$x]);
         }
     }
@@ -128,8 +132,18 @@ function getLegalSoldier($data,$cvc){
 }
 
 //获取每个阶段解锁相应士兵的json数据
-function getUnlockedSoldierJson(){
-
+function getUnlockedSoldierJson($data,$quality){
+    $unlockedSoldier=array();
+    foreach ($data as $x=>$x_value){
+        if($data[$x]['quality']>=$quality){
+            array_push($unlockedSoldier,$data[$x]);
+        }
+    }
+    if(count($unlockedSoldier)!=0){
+        return json_encode($unlockedSoldier);
+    }else{
+        return "该条件无合法士兵！";
+    }
 }
 
 
