@@ -10,7 +10,13 @@ $main->setNewJsonArray();
 $data=$main->getJsonArray();
 print_r(getUnlockedSoldierJson($data,$quality));
 
-//获取每个阶段解锁相应士兵的json数据
+
+/**
+ * 获取每个阶段解锁相应士兵的json数据
+ * @param $data
+ * @param $quality
+ * @return false|string
+ */
 function getUnlockedSoldierJson($data,$quality){
     $unlockedSoldier=array();
     foreach ($data as $x=>$x_value){

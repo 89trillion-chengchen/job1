@@ -13,7 +13,16 @@ $data=$main->getJsonArray();
 print_r(getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc));
 
 
-//获取该稀有度cvc合法且已解锁的所有士兵
+
+
+/**
+ *获取该稀有度cvc合法且已解锁的所有士兵
+ * @param $data
+ * @param $rarity
+ * @param $quality
+ * @param $cvc
+ * @return false|string
+ */
 function getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc){
     $legalCvcAndUnlockedSoldier=array();
     foreach ($data as $x=>$x_value){

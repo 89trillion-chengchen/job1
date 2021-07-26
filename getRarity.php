@@ -11,7 +11,13 @@ $data=$main->getJsonArray();
 
 echo getRarity($data,$id)."<br>";
 
-//获取稀有度
+
+/**
+ * 获取稀有度
+ * @param $data
+ * @param $id
+ * @return mixed|string
+ */
 function getRarity($data,$id){
     //echo "id: ".$id."<br>";
     $num=null;

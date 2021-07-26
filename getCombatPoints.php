@@ -9,7 +9,14 @@ $main->setNewJsonArray();
 $data=$main->getJsonArray();
 echo getCombatPoints($data,$id)."<br>";
 
-//获取战力
+
+/**
+ * 获取战力
+ *
+ * @param $data
+ * @param $id
+ * @return mixed|string
+ */
 function getCombatPoints($data,$id){
     $num=null;
     foreach ($data as $x=>$x_value){

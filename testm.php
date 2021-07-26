@@ -14,7 +14,9 @@ $quality=$_GET['quality'];
 
 class Main{
 
-
+    /**
+     * 解析json文件并整理格式且只保留有用的数据，生成新的json文件
+     */
 public static function setNewJsonArray(){
     // 从文件中读取数据到PHP变量
     $json_string = file_get_contents('json/config.army.model.json');
@@ -34,6 +36,10 @@ public static function setNewJsonArray(){
 
 }
 
+    /**
+     * 解析新的json文件返回数组
+     * @return mixed
+     */
 function getJsonArray(){
     // 从文件中读取数据到PHP变量
     $json_string = file_get_contents('json/newconfig.army.model.json');

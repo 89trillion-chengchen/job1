@@ -9,7 +9,13 @@ $main->setNewJsonArray();
 $data=$main->getJsonArray();
 
 print_r(getLegalSoldier($data,$cvc));
-//获取所有合法士兵
+
+/**
+ * 获取所有合法士兵
+ * @param $data
+ * @param $cvc
+ * @return false|string
+ */
 function getLegalSoldier($data,$cvc){
     $legalSoldier=array();
     foreach ($data as $x=>$x_value){
