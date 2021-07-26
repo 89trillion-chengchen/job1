@@ -6,6 +6,7 @@ $id=$_GET['id'];
 
 
 $main=new Main();
+$main->setNewJsonArray();
 $data=$main->getJsonArray();
 
 echo getRarity($data,$id)."<br>";

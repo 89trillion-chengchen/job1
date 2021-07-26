@@ -6,6 +6,7 @@ include 'testm.php';
 $quality=$_GET['quality'];
 
 $main=new Main();
+$main->setNewJsonArray();
 $data=$main->getJsonArray();
 print_r(getUnlockedSoldierJson($data,$quality));
 

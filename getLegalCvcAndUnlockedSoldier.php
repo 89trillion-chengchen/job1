@@ -8,6 +8,7 @@ $rarity=$_GET['rarity'];
 $quality=$_GET['quality'];
 
 $main=new Main();
+$main->setNewJsonArray();
 $data=$main->getJsonArray();
 print_r(getLegalCvcAndUnlockedSoldier($data,$rarity,$quality,$cvc));
 

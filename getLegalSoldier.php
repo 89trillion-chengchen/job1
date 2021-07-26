@@ -5,6 +5,7 @@ include 'testm.php';
 $cvc=$_GET['cvc'];
 
 $main=new Main();
+$main->setNewJsonArray();
 $data=$main->getJsonArray();
 
 print_r(getLegalSoldier($data,$cvc));

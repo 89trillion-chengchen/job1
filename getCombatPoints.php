@@ -5,6 +5,7 @@ include 'testm.php';
 $id=$_GET['id'];
 
 $main=new Main();
+$main->setNewJsonArray();
 $data=$main->getJsonArray();
 echo getCombatPoints($data,$id)."<br>";
 
