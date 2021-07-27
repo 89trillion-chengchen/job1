@@ -1,15 +1,14 @@
 ## 1.整体思路
-1.解析json文件，整理格式且只保留有用的数据，生成新的json文件。  
+1.解析json文件，整理格式且只保留有用的数据，生成新的json文件  
 2.解析新的json文件，转为数组供其他函数使用  
-3.对照不同任务完成不同逻辑。
+3.对照不同任务完成不同逻辑
 ## 2.接口设计
 ```php 
 （1）获取稀有度 getRarity.php  
 请求方法  
 HTTP GET  
 地址   
-http://localhost:8000/getRarity.php?id=10101 
-  
+http://localhost:8000/getRarity.php?id=10101  
 响应   
 {  
 rarity: 1  
@@ -20,8 +19,7 @@ rarity: 1
 请求方法  
 HTTP GET  
 地址   
-http://localhost:8000/getCombatPoints.php?id=10101
-  
+http://localhost:8000/getCombatPoints.php?id=10101  
 响应   
 {  
 CombatPoints: 1  
@@ -33,7 +31,6 @@ CombatPoints: 1
 HTTP GET  
 地址   
 http://localhost:8000/getLegalCvcAndUnlockedSoldier.php?cvc=1500&rarity=1&quality=1  
-  
 响应   
 {  
 [{"id":"10101",  
@@ -48,8 +45,7 @@ http://localhost:8000/getLegalCvcAndUnlockedSoldier.php?cvc=1500&rarity=1&qualit
 请求方法  
 HTTP GET  
 地址   
-http://localhost:8000/getLegalSoldier.php?cvc=1500   
-  
+http://localhost:8000/getLegalSoldier.php?cvc=1500  
 响应   
 {  
 [{"id":"10101",  
