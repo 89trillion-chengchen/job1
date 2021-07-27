@@ -32,7 +32,7 @@ function getRarity($data,$id){
         }
     }
     if($num!==null){
-        return $data[$num]['rarity'];
+        return "rarity:".$data[$num]['rarity'];
     }else{
         return 'id错误，未找到该士兵id！';
     }

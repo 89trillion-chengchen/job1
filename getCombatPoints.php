@@ -28,7 +28,7 @@ function getCombatPoints($data,$id){
         }
     }
     if($num!==null){
-        return $data[$num]['combatPoints'];
+        return "combatPoints".$data[$num]['combatPoints'];
     }else{
         return 'id错误，未找到该士兵id！';
     }
