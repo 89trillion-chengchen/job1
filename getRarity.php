@@ -10,7 +10,6 @@ $main->setNewJsonArray();
 $data=$main->getJsonArray();
 
 
-echo $id."<br>";
 
 echo getRarity($data,$id);
 
