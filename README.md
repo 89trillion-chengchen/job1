@@ -72,6 +72,6 @@ http://localhost:8000/getUnlockedSoldierJson.php?quality=1
 }    
  ```
 ## 3.运行
- ```php
-部署apache端口为8000运行即可
- ```
+
+部署apache端口为8000运行即可  
+
