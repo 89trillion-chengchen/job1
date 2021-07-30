@@ -184,7 +184,7 @@ http://89tr.chengchen.com/UnlockedSoldier/getUnlockedSoldierJson
     └── index.php
 
   ```
-### 3.1
+### 3.1 逻辑分层
   ```php
     json文件夹是json文件
 
