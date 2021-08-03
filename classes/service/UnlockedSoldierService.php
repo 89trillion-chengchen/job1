@@ -3,7 +3,8 @@
 namespace service;
 
 
-class UnlockedSoldierService extends BaseService {
+class UnlockedSoldierService extends BaseService
+{
 
 
     /**
@@ -17,9 +18,9 @@ class UnlockedSoldierService extends BaseService {
     {
 
         if (!isset($params) || empty($params)) {
-            return [ false, 'lack_of_$params' ];
+            return [false, 'lack_of_$params'];
         }
-        return [ true, 'ok' ];
+        return [true, 'ok'];
     }
 
 
@@ -29,19 +30,20 @@ class UnlockedSoldierService extends BaseService {
      * @param $quality
      * @return false|string
      */
-    function getUnlockedSoldierJson($quality){
+    function getUnlockedSoldierJson($quality)
+    {
 
         parent::setNewJsonArray();
-        $data=parent::getJsonArray();
+        $data = parent::getJsonArray();
 
-        $unlockedSoldier=array();
-        foreach ($data as $x=>$x_value){
-            if($data[$x]['quality']>=$quality){
-                array_push($unlockedSoldier,$data[$x]);
+        $unlockedSoldier = array();
+        foreach ($data as $x => $x_value) {
+            if ($data[$x]['quality'] >= $quality) {
+                array_push($unlockedSoldier, $data[$x]);
             }
         }
 
-        if(count($unlockedSoldier)!=0){
+        if (count($unlockedSoldier) != 0) {
 
             return parent::show(
                 200,
@@ -50,7 +52,7 @@ class UnlockedSoldierService extends BaseService {
             );
 
 
-        }else{
+        } else {
 
             return parent::show(
                 200,
