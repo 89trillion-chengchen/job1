@@ -4,8 +4,8 @@
 namespace service;
 
 
-
-class LegalSoldierService extends BaseService{
+class LegalSoldierService extends BaseService
+{
 
 
     /**
@@ -19,10 +19,10 @@ class LegalSoldierService extends BaseService{
     {
 
         if (!isset($cvc) || empty($cvc)) {
-            return [ false, 'lack_of_cvc' ];
+            return [false, 'lack_of_cvc'];
         }
 
-        return [ true, 'ok' ];
+        return [true, 'ok'];
     }
 
     /**
@@ -31,30 +31,29 @@ class LegalSoldierService extends BaseService{
      * @param $cvc
      * @return false|string
      */
-    function getLegalSoldier($cvc){
+    function getLegalSoldier($cvc)
+    {
         parent::setNewJsonArray();
-        $data=parent::getJsonArray();
-        $legalSoldier=array();
-        foreach ($data as $x=>$x_value){
-            if($data[$x]['cvc']<=$cvc){
-                array_push($legalSoldier,$data[$x]);
+        $data = parent::getJsonArray();
+        $legalSoldier = array();
+        foreach ($data as $key => $value) {
+            if ($value['cvc'] <= $cvc) {
+                array_push($legalSoldier, $value);
             }
         }
-        if(count($legalSoldier)!=0){
+        if (count($legalSoldier) != 0) {
             return parent::show(
                 200,
                 ok,
                 $legalSoldier
             );
-        }else{
+        } else {
             return parent::show(
                 200,
-                该版本号无合法士兵！,
+                '该版本号无合法士兵!',
                 $legalSoldier
             );
         }
 
     }
-
-
 }

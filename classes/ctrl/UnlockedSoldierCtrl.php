@@ -24,32 +24,23 @@ class UnlockedSoldierCtrl extends CtrlBase
 
     /**
      * 获取每个阶段解锁相应士兵的json数据
-     * @return false|string|JsonView
+     * @return JsonView
      */
     public function getUnlockedSoldierJson()
     {
-
         //获取get或post请求数据
-        $quality = HttpUtil::getPostData('quality');
-
-
+        $unlockArena = HttpUtil::getPostData('unlockArena');
         /** @var UnlockedSoldierService $cntSrv */
         $cntSrv = util\Singleton::get(UnlockedSoldierService::class);
-
         //校验数据
-        list($checkResult, $checkNotice) = $cntSrv->checkUploadParams($quality);
-
-
+        list($checkResult, $checkNotice) = $cntSrv->checkUploadParams($unlockArena);
         if (true !== $checkResult) {
             $rspArr = AnswerService::makeResponseArray($checkNotice);
             return new JsonView($rspArr);
         }
-
         //执行函数
-        $result = $cntSrv->getUnlockedSoldierJson($quality);
-
-        return json_encode($result);
-
+        $result = $cntSrv->getUnlockedSoldierJson($unlockArena);
+        return new JsonView($result);
 
     }
 

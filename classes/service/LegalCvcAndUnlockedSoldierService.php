@@ -3,8 +3,8 @@
 namespace service;
 
 
-
-class LegalCvcAndUnlockedSoldierService extends BaseService{
+class LegalCvcAndUnlockedSoldierService extends BaseService
+{
 
 
     /**
@@ -14,22 +14,21 @@ class LegalCvcAndUnlockedSoldierService extends BaseService{
     {
     }
 
-    public function checkParams($rarity, $quality, $cvc)
+    public function checkParams($rarity, $unlockArena, $cvc)
     {
-
         if (!isset($rarity) || empty($rarity)) {
-            return [ false, 'lack_of_rarity' ];
+            return [false, 'lack_of_rarity'];
         }
 
-        if (!isset($quality) || empty($quality)) {
-            return [ false, 'lack_of_quality' ];
+        if ($unlockArena=="") {
+            return [false, 'lack_of_unlockArena'];
         }
 
         if (!isset($cvc) || empty($cvc)) {
-            return [ false, 'lack_of_cvc' ];
+            return [false, 'lack_of_cvc'];
         }
 
-        return [ true, 'ok' ];
+        return [true, 'ok'];
     }
 
     /**
@@ -39,31 +38,26 @@ class LegalCvcAndUnlockedSoldierService extends BaseService{
      * @param $cvc
      * @return array
      */
-    public function getLegalCvcAndUnlockedSoldier($rarity,$quality,$cvc){
-
+    public function getLegalCvcAndUnlockedSoldier($rarity, $unlockArena, $cvc)
+    {
         parent::setNewJsonArray();
-        $data=parent::getJsonArray();
-
-        $legalCvcAndUnlockedSoldier=array();
-        foreach ($data as $x=>$x_value){
-            if($data[$x]['rarity']==$rarity&&$data[$x]['quality']>=$quality&&$data[$x]['cvc']<=$cvc){
-                array_push($legalCvcAndUnlockedSoldier,$data[$x]);
+        $data = parent::getJsonArray();
+        $legalCvcAndUnlockedSoldier = array();
+        foreach ($data as $key => $value) {
+            if ($value['rarity'] == $rarity && $value['unlockArena'] == $unlockArena && $value['cvc'] <= $cvc) {
+                array_push($legalCvcAndUnlockedSoldier, $value);
             }
         }
-        if(count($legalCvcAndUnlockedSoldier)!=0){
-
+        if (count($legalCvcAndUnlockedSoldier) != 0) {
             return parent::show(
                 200,
                 ok,
                 $legalCvcAndUnlockedSoldier
             );
-
-
-        }else{
-
+        } else {
             return parent::show(
                 200,
-                该条件无合法士兵！,
+                '该条件无合法士兵！',
                 $legalCvcAndUnlockedSoldier
             );
         }

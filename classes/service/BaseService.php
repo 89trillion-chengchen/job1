@@ -29,13 +29,13 @@ class BaseService
         // 用参数true把JSON字符串强制转成PHP数组
         $data = json_decode($json_string, true);
         $myarray = array();
-        foreach ($data as $x => $x_values) {
+        foreach ($data as $key => $values) {
         $tmparray = array(
-            "id" => $data[$x]['id'],
-            "rarity" => $data[$x]['Rarity'],
-            "combatPoints" => $data[$x]['CombatPoints'],
-            "quality" => $data[$x]['Quality'],
-            "cvc" => $data[$x]['Cvc']
+            "id" => $values['id'],
+            "rarity" => $values['Rarity'],
+            "combatPoints" => $values['CombatPoints'],
+            "unlockArena" => $values['UnlockArena'],
+            "cvc" => $values['Cvc']
         );
         array_push( $myarray,$tmparray);
 

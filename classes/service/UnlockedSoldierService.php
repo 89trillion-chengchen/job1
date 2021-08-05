@@ -17,46 +17,37 @@ class UnlockedSoldierService extends BaseService
     public function checkUploadParams($params)
     {
 
-        if (!isset($params) || empty($params)) {
+        if ($params="") {
             return [false, 'lack_of_$params'];
         }
         return [true, 'ok'];
     }
 
-
     /**
      * 获取每个阶段解锁相应士兵的json数据
-     * @param $data
-     * @param $quality
-     * @return false|string
+     * @param $unlockArena
+     * @return array
      */
-    function getUnlockedSoldierJson($quality)
+    function getUnlockedSoldierJson($unlockArena)
     {
-
         parent::setNewJsonArray();
         $data = parent::getJsonArray();
-
         $unlockedSoldier = array();
-        foreach ($data as $x => $x_value) {
-            if ($data[$x]['quality'] >= $quality) {
-                array_push($unlockedSoldier, $data[$x]);
+        foreach ($data as $key => $value) {
+            if ($value['unlockArena'] == $unlockArena) {
+                array_push($unlockedSoldier, $value);
             }
         }
-
         if (count($unlockedSoldier) != 0) {
-
             return parent::show(
                 200,
                 ok,
                 $unlockedSoldier
             );
-
-
         } else {
-
             return parent::show(
                 200,
-                该条件无合法士兵！,
+                '该条件无合法士兵！',
                 $unlockedSoldier
             );
         }

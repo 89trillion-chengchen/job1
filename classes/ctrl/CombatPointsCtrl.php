@@ -8,12 +8,8 @@ use service\CombatPointsService;
 use utils\HttpUtil;
 use view\JsonView;
 
-
-
-
-
-class CombatPointsCtrl extends CtrlBase {
-
+class CombatPointsCtrl extends CtrlBase
+{
     /**
      * 构造函数，继承父方法
      * @return void
@@ -25,14 +21,17 @@ class CombatPointsCtrl extends CtrlBase {
     }
 
     /**
-     * 输入id获取战力
+
      * @return false|string|JsonView
      */
-    public function getCombatPoints(){
-
+    /**
+     * 输入id获取战力
+     * @return JsonView
+     */
+    public function getCombatPoints()
+    {
         //获取get或post请求数据
         $params = HttpUtil::getPostData('id');
-
 
         /** @var CombatPointsService $cntSrv */
         $cntSrv = util\Singleton::get(CombatPointsService::class);
@@ -40,22 +39,16 @@ class CombatPointsCtrl extends CtrlBase {
         //校验数据
         list($checkResult, $checkNotice) = $cntSrv->checkUploadParams($params);
 
-
-        if (true!==$checkResult){
+        if (true !== $checkResult) {
             $rspArr = AnswerService::makeResponseArray($checkNotice);
             return new JsonView($rspArr);
         }
 
         //执行函数
-        $result=$cntSrv->getCombatPoints($params);
+        $result = $cntSrv->getCombatPoints($params);
 
-        return json_encode($result);
-
-
-
+        return new JsonView($result);
     }
-
-
 
 }
 

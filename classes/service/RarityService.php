@@ -15,9 +15,8 @@ class RarityService extends BaseService {
 
     public function checkUploadParams($params)
     {
-
         if (!isset($params) || empty($params)) {
-            return [ false, 'lack_of_$params' ];
+            return [ false, 'lack_of_params' ];
         }
         return [ true, 'ok' ];
     }
@@ -30,27 +29,26 @@ class RarityService extends BaseService {
     function getRarity($id){
         parent::setNewJsonArray();
         $data=parent::getJsonArray();
-        $num=array();
-        foreach ($data as $x=>$x_value){
-            //echo $data[$x]['id']."<br>";
-            if($data[$x]['id']==$id){
-                array_push($num,$data[$x]);
+        $rarity=array();
+        foreach ($data as $key=>$value){
+            if($value['id']==$id){
+                $rarity['rarity']=$value[rarity];
                 break;
             }
         }
 
-        if($num == null){
+        if($rarity == null){
             return parent::show(
                 200,
-                id错误，未找到该士兵id！,
-                $num
+                'id错误，未找到该士兵id！',
+                $rarity
             );
 
         }else{
             return parent::show(
                 200,
                 ok,
-                $num
+                $rarity
             );
         }
 

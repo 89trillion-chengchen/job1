@@ -11,10 +11,8 @@ use utils\HttpUtil;
 use view\JsonView;
 
 
-
-
-
-class RarityCtrl extends CtrlBase {
+class RarityCtrl extends CtrlBase
+{
 
     /**
      * 构造函数，继承父方法
@@ -30,33 +28,24 @@ class RarityCtrl extends CtrlBase {
      * 输入士兵id获取稀有度
      * @return false|string|JsonView
      */
-    public function getRarity(){
-
+    public function getRarity()
+    {
         //获取get或post请求数据
         $params = HttpUtil::getPostData('id');
-
-
         /** @var RarityService $cntSrv */
         $cntSrv = util\Singleton::get(RarityService::class);
-
         //校验数据
         list($checkResult, $checkNotice) = $cntSrv->checkUploadParams($params);
-
-
-        if (true!==$checkResult){
+        if (true !== $checkResult) {
             $rspArr = AnswerService::makeResponseArray($checkNotice);
             return new JsonView($rspArr);
         }
 
         //执行函数
-        $result=$cntSrv->getRarity($params);
+        $result = $cntSrv->getRarity($params);
 
-        return json_encode($result);
-
-
-
+        return new JsonView($result);
     }
-
 
 
 }
