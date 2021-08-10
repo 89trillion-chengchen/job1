@@ -2,9 +2,6 @@
 
 namespace service;
 
-use entity\soldier;
-
-include '/entity/soldier.php';
 
 class BaseService
 {
@@ -22,7 +19,6 @@ class BaseService
      */
     public function setNewJsonArray()
     {
-
         // 从文件中读取数据到PHP变量
         $json_string = file_get_contents('../json/config.army.model.json');
 
@@ -38,7 +34,6 @@ class BaseService
             "cvc" => $values['Cvc']
         );
         array_push( $myarray,$tmparray);
-
     }
 
         try {

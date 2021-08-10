@@ -56,7 +56,7 @@ class LegalCvcAndUnlockedSoldierService extends BaseService
             );
         } else {
             return parent::show(
-                200,
+                400,
                 '该条件无合法士兵！',
                 $legalCvcAndUnlockedSoldier
             );

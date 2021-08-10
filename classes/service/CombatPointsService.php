@@ -40,9 +40,9 @@ class CombatPointsService extends BaseService
         }
         if ($combatPoints == null) {
             return parent::show(
-                200,
+                400,
                 'id错误，未找到该士兵id！',
-                $combatPoints
+                $id
             );
 
         } else {
