@@ -44,6 +44,12 @@ HTTP POST
 ```php 
 http://89tr.chengchen.com/Rarity/getRarity  
 ```
+请求参数
+```php 
+{
+       "id":"10101"
+}
+```
 响应   
 ```php 
 {
@@ -67,6 +73,12 @@ HTTP POST
 ```php 
 http://89tr.chengchen.com/CombatPoints/getCombatPoints 
  ```
+请求参数
+```php 
+{
+       "id":"10101"
+}
+```
 响应   
 ```php 
 {
@@ -86,6 +98,14 @@ http://89tr.chengchen.com/CombatPoints/getCombatPoints
  ```php 
 HTTP POST  
  ```
+请求参数
+```php 
+{
+     "rarity":"1",
+     "cvc":"1100",
+     "unlockArena":"0"
+}
+```
 地址   
  ```php 
  http://89tr.chengchen.com/LegalCvcAndUnlockedSoldier/getLegalCvcAndUnlockedSoldier
@@ -119,6 +139,12 @@ HTTP POST
   ```php 
 http://89tr.chengchen.com/LegalSoldier/getLegalSoldier 
  ```
+请求参数
+```php 
+{
+     "cvc":"1100"
+}
+```
 响应   
  ```php 
 {
@@ -148,6 +174,12 @@ HTTP POST
    ```php 
 http://89tr.chengchen.com/UnlockedSoldier/getUnlockedSoldierJson  
    ```
+请求参数
+```php 
+{
+     "unlockArena":"0"
+}
+```
 响应   
  ```php 
 {
