@@ -17,11 +17,9 @@ class LegalSoldierService extends BaseService
 
     public function checkParams($cvc)
     {
-
         if (!isset($cvc) || empty($cvc)) {
             return [false, 'lack_of_cvc'];
         }
-
         return [true, 'ok'];
     }
 

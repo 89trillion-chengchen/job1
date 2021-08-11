@@ -16,9 +16,8 @@ class UnlockedSoldierService extends BaseService
 
     public function checkUploadParams($params)
     {
-
         if ($params="") {
-            return [false, 'lack_of_$params'];
+            return [false, 'lack_of_params'];
         }
         return [true, 'ok'];
     }
